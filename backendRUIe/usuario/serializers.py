@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
-from usuario.models import Usuario, Paises, EstadoFuerza, Frases, Municipios, PuntosInternacion, RescatePunto
+from usuario.models import Usuario, Paises, EstadoFuerza, Frases, Municipios, PuntosInternacion, RescatePunto, ConteoRapidoPunto
 
 class UserGetSerializer(ModelSerializer):
 	class Meta:
@@ -140,7 +140,7 @@ class ListRescatePuntoSerializer(serializers.HyperlinkedModelSerializer):
 
 class ConteoRapidoSerializer(ModelSerializer):
 	class Meta:
-		model = RescatePunto
+		model = ConteoRapidoPunto
 		fields = [
 			'oficinaRepre',
 			'fecha',
@@ -193,4 +193,4 @@ class ConteoRapidoSerializer(ModelSerializer):
 			'NNA_S_mujeresEmb',
 			]
 	def create(self, validated_data):
-		return RescatePunto.objects.create(**validated_data)
+		return ConteoRapidoPunto.objects.create(**validated_data)
